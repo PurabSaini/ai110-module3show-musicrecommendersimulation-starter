@@ -21,8 +21,12 @@ Explain your design in plain language.
 
 Some prompts to answer:
 
+From my understanding, streaming platforms like Youtube and Spotify rely on collaborative-filtering and content-based filtering. The former compares users with similar likes and makes suggestions based on those similarities. The latter simply shows the user options that are similar in type/content based on what the user has liked before. For this project I plan on foucsing on content-based filtering.
+
 - What features does each `Song` use in your system
   - For example: genre, mood, energy, tempo
+  The features each `Song` uses in my system are
+    genre, mood, energy, acousticness
 - What information does your `UserProfile` store
 - How does your `Recommender` compute a score for each song
 - How do you choose which songs to recommend
