@@ -28,8 +28,28 @@ From my understanding, streaming platforms like Youtube and Spotify rely on coll
   The features each `Song` uses in my system are
     genre, mood, energy, acousticness
 - What information does your `UserProfile` store
+  Favorite genre, favorite mood, preferred energy, and preferred acousticness.
 - How does your `Recommender` compute a score for each song
+
+  Each feature acts as a "judge" that returns a sub-score between 0 and 1. Each
+  sub-score is multiplied by a weight and the results are added together:
+
+  ```
+  score = 3.0·genre_sub + 2.0·mood_sub + 1.5·energy_sub + 1.0·acoustic_sub
+  ```
+
+  Because every sub-score is on the same 0–1 scale, the weights alone decide how
+  important each feature is. The maximum possible score is 7.5.
+
+  | Feature | Weight | Match type | Sub-score rule (0–1) |
+  |---------|--------|------------|----------------------|
+  | genre | 3.0 | Exact | `1.0` if `song.genre == favorite_genre`, else `0.0` |
+  | mood | 2.0 | Exact | `1.0` if `song.mood == favorite_mood`, else `0.0` |
+  | energy | 1.5 | Closeness | `max(0, 1 - abs(song.energy - target_energy))` |
+  | acousticness | 1.0 | Directional | `song.acousticness` if `likes_acoustic`, else `1 - song.acousticness` |
+
 - How do you choose which songs to recommend
+  I return the k number of songs with the highest scores. 
 
 You can include a simple diagram or bullet list if helpful.
 
