@@ -51,8 +51,6 @@ From my understanding, streaming platforms like Youtube and Spotify rely on coll
 - How do you choose which songs to recommend
   I return the k number of songs with the highest scores. 
 
-You can include a simple diagram or bullet list if helpful.
-
 ---
 
 ## Getting Started
@@ -92,15 +90,25 @@ You can add more tests in `tests/test_recommender.py`.
 
 ## Sample Recommendation Output
 
-Paste a sample of your recommender's output here as a text block so a reader can see what it produces:
+Running `python -m src.main` with the sample user profile `{"genre": "pop", "mood": "happy", "energy": 0.8}` produces:
 
 ```
-# e.g.:
-# User profile: genre=indie, mood=chill, energy=low
-# Recommendations:
-#   1. ...
-#   2. ...
-#   3. ...
+Top recommendations:
+
+Sunrise City - Score: 6.47
+Because: matches your favorite genre (pop), matches your favorite mood (happy), energy (0.82) is close to your target
+
+Gym Hero - Score: 4.30
+Because: matches your favorite genre (pop), energy (0.93) is close to your target
+
+Rooftop Lights - Score: 3.44
+Because: matches your favorite mood (happy), energy (0.76) is close to your target
+
+Concrete Dreams - Score: 1.50
+Because: energy (0.80) is close to your target
+
+Night Drive Loop - Score: 1.42
+Because: energy (0.75) is close to your target
 ```
 
 **Screenshot or video** *(optional)*: <!-- Insert a screenshot or demo video link here -->
