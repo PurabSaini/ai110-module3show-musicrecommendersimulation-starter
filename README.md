@@ -22,11 +22,9 @@ recommendations you get.
 
 From my understanding, streaming platforms like Youtube and Spotify rely on collaborative-filtering and content-based filtering. The former compares users with similar likes and makes suggestions based on those similarities. The latter simply shows the user options that are similar in type/content based on what the user has liked before. For this project I plan on foucsing on content-based filtering.
 
-- What features does each `Song` use in your system
-  The features each `Song` uses in my system are genre, mood, energy, acousticness
-- What information does your `UserProfile` store
-  Favorite genre, favorite mood, preferred energy, and preferred acousticness.
-- How does your `Recommender` compute a score for each song
+- The features each `Song` uses in my system are genre, mood, energy, acousticness
+- `UserProfile` stores favorite genre, favorite mood, preferred energy, and preferred acousticness.
+- Described below is how the `Recommender` computes a score for each song
 
   Each feature acts as a "judge" that returns a sub-score between 0 and 1. Each
   sub-score is multiplied by a weight and the results are added together:
@@ -45,8 +43,7 @@ From my understanding, streaming platforms like Youtube and Spotify rely on coll
   | energy | 1.5 | Closeness | `max(0, 1 - abs(song.energy - target_energy))` |
   | acousticness | 1.0 | Directional | `song.acousticness` if `likes_acoustic`, else `1 - song.acousticness` |
 
-- How do you choose which songs to recommend
-  I return the k number of songs with the highest scores. 
+  I return the k number of songs with the highest scores as recommendations. 
 
 ---
 
